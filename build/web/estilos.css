@@ -1,0 +1,39 @@
+body{
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.LOGO{
+    height: 40px ;
+    border-radius: 50%;
+    margin-right:  15px;
+}
+.titulos{
+    color: white;
+    text-align: center;
+}
+
+.login{
+    width: 230px;
+    margin:  auto;
+    background-color: white;
+}
+.table {
+    max-width: 60%;
+    min-width: 0px;
+}
+
+footer{
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    background-color: black;
+    height: 30px;
+    bottom: 0;
+    z-index: -1;
+}
+footer p{
+    margin: 3px;
+    color: white;
+}

@@ -6,20 +6,15 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,10 +29,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Turnos.findAll", query = "SELECT t FROM Turnos t")
     , @NamedQuery(name = "Turnos.findByIdTurnos", query = "SELECT t FROM Turnos t WHERE t.idTurnos = :idTurnos")
-    , @NamedQuery(name = "Turnos.findByHora", query = "SELECT t FROM Turnos t WHERE t.hora = :hora")
     , @NamedQuery(name = "Turnos.findByFecha", query = "SELECT t FROM Turnos t WHERE t.fecha = :fecha")
-    , @NamedQuery(name = "Turnos.findByIdUsuario", query = "SELECT t FROM Turnos t WHERE t.idUsuario = :idUsuario")
-    , @NamedQuery(name = "Turnos.findByIdAdministrador", query = "SELECT t FROM Turnos t WHERE t.idAdministrador = :idAdministrador")
+    , @NamedQuery(name = "Turnos.findByNombre", query = "SELECT t FROM Turnos t WHERE t.nombre = :nombre")
+    , @NamedQuery(name = "Turnos.findByApellido", query = "SELECT t FROM Turnos t WHERE t.apellido = :apellido")
+    , @NamedQuery(name = "Turnos.findByCgoArea", query = "SELECT t FROM Turnos t WHERE t.cgoArea = :cgoArea")
+    , @NamedQuery(name = "Turnos.findByTelefono", query = "SELECT t FROM Turnos t WHERE t.telefono = :telefono")
     , @NamedQuery(name = "Turnos.findByAsistencia", query = "SELECT t FROM Turnos t WHERE t.asistencia = :asistencia")})
 public class Turnos implements Serializable {
 
@@ -49,29 +45,31 @@ public class Turnos implements Serializable {
     private Integer idTurnos;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 8)
-    @Column(name = "hora")
-    private String hora;
-    @Basic(optional = false)
-    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "fecha")
-    @Temporal(TemporalType.DATE)
-    private Date fecha;
+    private String fecha;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idUsuario")
-    private int idUsuario;
+    @Size(min = 1, max = 20)
+    @Column(name = "Nombre")
+    private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idAdministrador")
-    private int idAdministrador;
+    @Size(min = 1, max = 20)
+    @Column(name = "Apellido")
+    private String apellido;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CgoArea")
+    private int cgoArea;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "telefono")
+    private int telefono;
     @Basic(optional = false)
     @NotNull
     @Column(name = "asistencia")
     private boolean asistencia;
-    @JoinColumn(name = "idCanchas", referencedColumnName = "idCanchas")
-    @ManyToOne(optional = false)
-    private Canchas idCanchas;
 
     public Turnos() {
     }
@@ -80,12 +78,13 @@ public class Turnos implements Serializable {
         this.idTurnos = idTurnos;
     }
 
-    public Turnos(Integer idTurnos, String hora, Date fecha, int idUsuario, int idAdministrador, boolean asistencia) {
+    public Turnos(Integer idTurnos, String fecha, String nombre, String apellido, int cgoArea, int telefono, boolean asistencia) {
         this.idTurnos = idTurnos;
-        this.hora = hora;
         this.fecha = fecha;
-        this.idUsuario = idUsuario;
-        this.idAdministrador = idAdministrador;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cgoArea = cgoArea;
+        this.telefono = telefono;
         this.asistencia = asistencia;
     }
 
@@ -97,36 +96,44 @@ public class Turnos implements Serializable {
         this.idTurnos = idTurnos;
     }
 
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getIdAdministrador() {
-        return idAdministrador;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setIdAdministrador(int idAdministrador) {
-        this.idAdministrador = idAdministrador;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getCgoArea() {
+        return cgoArea;
+    }
+
+    public void setCgoArea(int cgoArea) {
+        this.cgoArea = cgoArea;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
     public boolean getAsistencia() {
@@ -135,14 +142,6 @@ public class Turnos implements Serializable {
 
     public void setAsistencia(boolean asistencia) {
         this.asistencia = asistencia;
-    }
-
-    public Canchas getIdCanchas() {
-        return idCanchas;
-    }
-
-    public void setIdCanchas(Canchas idCanchas) {
-        this.idCanchas = idCanchas;
     }
 
     @Override

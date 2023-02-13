@@ -8,8 +8,8 @@
     <class>modelos.Administrador</class>
     <class>modelos.Canchas</class>
     <class>modelo.Administrador</class>
-    <class>modelo.Canchas</class>
     <class>modelo.Usuario</class>
+    <class>modelo.Canchas</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/canchaf5?zeroDateTimeBehavior=convertToNull"/>

@@ -51,7 +51,7 @@
                                 <input type="text" name="txtAdministrador" class="form-control mt-4" placeholder="Ingresa Email" required>
                                 <input type="password" name="txtClave" class="form-control mt-4" placeholder="Ingresa clave" required>
                                 <input type="submit" name="btnLogin" class="btn btn-success mt-4" value="Ingresar"> <br><br>
-                                <a href=>- Crear cuenta - </a>
+                                <a href="registroAdm.jsp?accion=N">- Crear cuenta - </a>
                             </div>
                         </div>
                     </form>

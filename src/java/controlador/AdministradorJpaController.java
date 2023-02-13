@@ -23,7 +23,7 @@ import modelo.Administrador;
  * @author DAVID
  */
 public class AdministradorJpaController implements Serializable {
-    
+
      public AdministradorJpaController() {
         this.emf = Persistence.createEntityManagerFactory("webFutbol5PU");
     }
@@ -33,6 +33,7 @@ public class AdministradorJpaController implements Serializable {
     }
     private EntityManagerFactory emf = null;
 
+ 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
@@ -145,26 +146,18 @@ public class AdministradorJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try{
             Administrador administrador = new Administrador();
-            List<Administrador> listaAd = this.findUsuario(adm, pass);
+            List<Administrador> listaAd = this.findAdministrador(adm, pass);
             if(!listaAd.isEmpty()){
                 administrador = listaAd.get(0);
-            }
+}
             return administrador;           
         }finally{
             em.close();
         }
     }
     
-    public Administrador findUsuario(Integer idAdministrador){
-        EntityManager em = getEntityManager();
-        try{
-            return em.find(Administrador.class, idAdministrador);
-        }finally{
-            em.close();
-        }
-    }
     
-    public List<Administrador> findUsuario(String adm, String pass){
+    public List<Administrador> findAdministrador(String adm, String pass){
         EntityManager em = getEntityManager();
         try{
             TypedQuery<Administrador> consPorAdmPass = (TypedQuery<Administrador>) em.createNamedQuery("Administrador.findByAdmPass");

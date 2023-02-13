@@ -36,37 +36,41 @@
             </div>
         </nav>
         <%
-         String nom = (String)session.getAttribute("Nombre");
-         String ape = (String) session.getAttribute("Apellido");
-         int tele = (int)session.getAttribute("Telefono");
+            String nom = (String) session.getAttribute("Nombre");
+            String ape = (String) session.getAttribute("Apellido");
+            int tele = (int) session.getAttribute("Telefono");
         %>
+        
         <div class="row">
-        <div class=" col-sm-3">
-            <h2 class="titulos my-4">Sacar turno</h2>
+            <div class=" col-sm-3">
+                <h2 class="titulos my-4">Sacar turno</h2>
 
-            <form class=" row-cols-3 my-3 m-3" action="">
-                <select class="form-select my-2" aria-label="Default select example">
-                    <option selected>Seleccione el horario</option>
-                    <option value="1">20:00</option>
-                    <option value="2">21:00</option>
-                    <option value="3">22:00</option>
-                    <option value="3">23:00</option>
-                </select>
-                <label for="txtNombre" class="titulos">Nombre</label>
-                <input type="text" id="txtNombre" name="txtNombre" class=" col-7 mx-aut my-2" value="<%= nom%>" required>
-                <label for="txtApellido" class="titulos">Apellido</label>
-                <input type="text" id="txtApellido" name="txtApellido" class=" col-7 mx-aut my-2" value="<%= ape%>"required>
-                <label for="txtTelelfono" class="titulos">Telefono</label>
-                <input type="phone" id="txtTelefono" name="txtTelefono" class=" col-7 mx-aut my-2" value="<%= tele%>"required>                   
-                <input type="submit" class="btn btn-success m-3  col-12 mx-auto"value="GUARDAR">                       
-            </form>
+                <form class=" row-cols-3 my-3 m-3" action="">
+
+                    <select class="form-select my-2" aria-label="Default select example">
+                        <option selected>Seleccione el horario</option>
+                        <option value="1">20:00</option>
+                        <option value="2">21:00</option>
+                        <option value="3">22:00</option>
+                        <option value="3">23:00</option>
+                    </select>
+                    <label for="txtfecha" class="titulos">Fecha</label>
+                    <input type="date" id="txtfecha" name="txtfecha" class=" col-7 mx-aut my-2" required>
+                    <label for="txtNombre" class="titulos">Nombre</label>
+                    <input type="text" id="txtNombre" name="txtNombre" class=" col-7 mx-aut my-2" value="<%= nom%>" required>
+                    <label for="txtApellido" class="titulos">Apellido</label>
+                    <input type="text" id="txtApellido" name="txtApellido" class=" col-7 mx-aut my-2" value="<%= ape%>"required>
+                    <label for="txtTelelfono" class="titulos">Telefono</label>
+                    <input type="phone" id="txtTelefono" name="txtTelefono" class=" col-7 mx-aut my-2" value="<%= tele%>"required>                   
+                    <input type="submit" class="btn btn-success m-3  col-12 mx-auto"value="GUARDAR">                       
+                </form>
+            </div>
+            <div class=" col-sm-8">
+                <h2 class="titulos my-4">Planilla de turnos</h2>
+
+
+            </div>
         </div>
-        <div class=" col-sm-8">
-             <h2 class="titulos my-4">Planilla de turnos</h2>
-             
-             
-        </div>
-    </div>
         <footer>
             <p>© DAVID RIOS</p>
         </footer>

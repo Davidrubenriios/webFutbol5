@@ -94,19 +94,19 @@
                     </div>
                     <div class="col-md-6">
                         <label for="txtEmail" class="form-label titulos">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" name="txtEmail" value="<%=email%>" required>
+                        <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="<%=email%>" required>
                     </div>
                     <div class="col-md-6">
                         <label for="txtPassword" class="form-label titulos">Contraseña</label>
-                        <input type="password" class="form-control" id="inputPassword4" name="txtPassword" value="<%=pass%>" required>
+                        <input type="password" class="form-control" id="txtPassword" name="txtPassword" value="<%=pass%>" required>
                     </div>
                     <div class="col-md-4">
                         <label for="txtCgoArea" class="form-label titulos">Codigo de area</label>
-                        <input type="number" class="form-control" id="inputCgoArea" name="txtCgoArea" value="<%=cgoArea%>" required>
+                        <input type="number" class="form-control" id="txtCgoArea" name="txtCgoArea" value="<%=cgoArea%>" required>
                     </div>
                     <div class="col-md-8">
                         <label for="txtTel" class="form-label titulos">Telefono</label>
-                        <input type="phone" class="form-control" id="inputTel" name="txtTel" value="<%=tel%>" required>
+                        <input type="phone" class="form-control" id="txtTel" name="txtTel" value="<%=tel%>" required>
                     </div>  
                     <div class="col-6">
                         <button type="reset" class="btn btn-primary" name="acction">Canselar</button>

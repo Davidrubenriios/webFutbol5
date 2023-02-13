@@ -12,10 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import modelo.Canchas;
 import modelo.Turnos;
 
 /**
@@ -23,10 +21,6 @@ import modelo.Turnos;
  * @author DAVID
  */
 public class TurnosJpaController implements Serializable {
-    
-      public TurnosJpaController() {
-        this.emf = Persistence.createEntityManagerFactory("webFutbol5PU");
-    }
 
     public TurnosJpaController(EntityManagerFactory emf) {
         this.emf = emf;
@@ -42,16 +36,7 @@ public class TurnosJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Canchas idCanchas = turnos.getIdCanchas();
-            if (idCanchas != null) {
-                idCanchas = em.getReference(idCanchas.getClass(), idCanchas.getIdCanchas());
-                turnos.setIdCanchas(idCanchas);
-            }
             em.persist(turnos);
-            if (idCanchas != null) {
-                idCanchas.getTurnosList().add(turnos);
-                idCanchas = em.merge(idCanchas);
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -65,22 +50,7 @@ public class TurnosJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Turnos persistentTurnos = em.find(Turnos.class, turnos.getIdTurnos());
-            Canchas idCanchasOld = persistentTurnos.getIdCanchas();
-            Canchas idCanchasNew = turnos.getIdCanchas();
-            if (idCanchasNew != null) {
-                idCanchasNew = em.getReference(idCanchasNew.getClass(), idCanchasNew.getIdCanchas());
-                turnos.setIdCanchas(idCanchasNew);
-            }
             turnos = em.merge(turnos);
-            if (idCanchasOld != null && !idCanchasOld.equals(idCanchasNew)) {
-                idCanchasOld.getTurnosList().remove(turnos);
-                idCanchasOld = em.merge(idCanchasOld);
-            }
-            if (idCanchasNew != null && !idCanchasNew.equals(idCanchasOld)) {
-                idCanchasNew.getTurnosList().add(turnos);
-                idCanchasNew = em.merge(idCanchasNew);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -109,11 +79,6 @@ public class TurnosJpaController implements Serializable {
                 turnos.getIdTurnos();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The turnos with id " + id + " no longer exists.", enfe);
-            }
-            Canchas idCanchas = turnos.getIdCanchas();
-            if (idCanchas != null) {
-                idCanchas.getTurnosList().remove(turnos);
-                idCanchas = em.merge(idCanchas);
             }
             em.remove(turnos);
             em.getTransaction().commit();

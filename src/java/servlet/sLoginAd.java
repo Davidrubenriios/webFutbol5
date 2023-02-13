@@ -60,7 +60,7 @@ public class sLoginAd extends HttpServlet {
             } else {
                 request.setAttribute("alertMsg", "Los datos ingresados no son validos. Por favor verifique!");
                 request.setAttribute("alertTitulo", "Datos incompletos");
-                rd = request.getRequestDispatcher("loginUsu.jsp");
+                rd = request.getRequestDispatcher("loginAd.jsp");
             }
             rd.include(request, response);
         }

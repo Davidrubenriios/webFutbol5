@@ -35,6 +35,8 @@
         </nav>
         <div  class=" container cuerpo py-4">
             <h1>contactos</h1>
+            <br>
+            <h2>Aun no hay contactos para mostrar</h2>
         </div>
         <footer>
             <p>© DAVID RIOS</p>

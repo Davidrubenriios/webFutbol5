@@ -51,7 +51,7 @@
 
                     List<Usuario> lista = objCtrolUsuario.findUsuarioEntities();
                     
-                    out.println("<a href='registro.jsp?accion=N'class='btn btn-primary  '>Nuevo</a> ");
+                    out.println("<a href='registro.jsp?accion=N'class='btn btn-primary'>Nuevo</a> ");
 
                     out.println("<table class='table table-hover table my-3'>");
                     out.println("<thead>");

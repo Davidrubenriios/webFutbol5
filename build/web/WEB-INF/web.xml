@@ -38,7 +38,7 @@
     </servlet>
     <servlet>
         <servlet-name>sRegistroAd</servlet-name>
-        <servlet-class>servlet.sRegistroAd</servlet-class>
+        <servlet-class>servlet.reddd</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>registro</servlet-name>

@@ -55,7 +55,7 @@
 
             List<Administrador> lista = objCtrolAdm.findAdministradorEntities();
                     
-            out.println("<a href='registro.jsp?accion=N'class='btn btn-primary'>Nuevo</a> ");
+            out.println("<a href='registroAdm.jsp?accion=N'class='btn btn-primary'>Nuevo</a> ");
 
             out.println("<table class='table table-hover table my-3'>");
             out.println("<thead>");
@@ -78,8 +78,8 @@
                     out.println("<td>" + objAdm.getApellido() + " " + objAdm.getNombre() + "</td>");
                     out.println("<td>" + objAdm.getDomicilio()+ "</td>");
                     out.println("<td>" + objAdm.getCodigoArea() + " " + objAdm.getTelefono() + "</td>");
-                    out.println("<td><a class='btn btn-danger' href='?accion="+ objAdm.getIdAdministrador() +"'</a>Borrar  </td>");
-                    out.println("<td><a class='btn btn-warning' href='registroAd.jsp?accion&idAdministrador="+ objAdm.getIdAdministrador() +"'</a>Edita</td>");
+                    out.println("<td><a class='btn btn-danger' href='eliminarAdm.jsp?accion=B&idAdministrador="+ + objAdm.getIdAdministrador() +"'</a>Borrar  </td>");
+                    out.println("<td><a class='btn btn-warning' href='registroAdm.jsp?accion&idAdministrador="+ objAdm.getIdAdministrador() +"'</a>Edita</td>");
                     out.println("</tr>");
                 }
 
